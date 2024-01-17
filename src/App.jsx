@@ -52,7 +52,7 @@ function App() {
     <>
     <div className='w-full h-1 bg-orange-950'></div>
     <div className="p-4 mx-auto max-w-2xl text-orange-950">
-      <h1 className="text-xl mb-4 font-bold">Koohii Instant Lookup</h1>
+      <h1 className="text-xl mb-4 font-bold">Koohii Instant Search</h1>
       <input className="border border-orange-950 rounded mb-4 p-2 w-full" type="text" name="searchTerm" value={searchTerm} onChange={(event) => {setSearchTerm(event.target.value)}} />
       <div>{searchTerm.split('').map((kanji) => {
         if (kanji in stories) {
