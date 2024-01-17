@@ -2,6 +2,7 @@
 
 ## Todo
 
+- [ ] Empty state
 - [ ] Uploading stories
   - [ ] Have empty state using keywords-rtk-1.20230411b.js
   - [ ] Upload to local storage
