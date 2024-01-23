@@ -73,7 +73,7 @@ function App() {
 	function getKeywordMatches(term) {
 		const matches = [];
 		for (const keyword of Object.keys(keywordsToKanji)) {
-			if (String(keyword).toLowerCase().includes(term.toLowerCase())) {
+			if (String(keyword).toLowerCase().startsWith(term.toLowerCase())) {
 				matches.push(keyword);
 			}
 		}
@@ -201,6 +201,9 @@ function App() {
 		for (const term of searchTerms) {
 			if (term[0].match(/[\u4E00-\u9FFF]/)) {
 				let currentStory = stories[term[0]];
+				if (currentStory === undefined) {
+					continue;
+				}
 				if (
 					processedSearchTerms[processedSearchTerms.length - 1] &&
 					currentStory[0] ===
