@@ -1,7 +1,8 @@
-# Koohii Instant Search
+# Koohii Search `but better`
 
 ## Todo
 
+- [ ] **Finish this week/end**
 - [x] Update favicon and title
 - [x] autofocus
 - [x] Keyword search
@@ -11,12 +12,18 @@
   - [x] when no story is found?
 - [x] range search showing as strange
   - [x] Update keyword search algo to use startsWith instead of includes
-- [ ] Redo search algo
-  - [ ] "hair on the head"
-  - [ ] Implement prepopulate algorithm in XState
-  - [ ] https://stately.ai/registry/editor/3dff0b0d-9ad3-45c9-942a-a9e286e189b6?machineId=63edce10-3f32-4565-aeb5-4f90a3f283f3&mode=Design
+- [x] Redo search algo
+  - "hair on the head"
+  - Implement prepopulate algorithm in XState
+  - https://stately.ai/registry/editor/3dff0b0d-9ad3-45c9-942a-a9e286e189b6?machineId=63edce10-3f32-4565-aeb5-4f90a3f283f3&mode=Design
+  - Run in node first to test (bun test?)
+    - https://bun.sh/docs/cli/test
+    - Run in watch mode
+  - {subQuery: "hair on the head", type: "keyword"}
+- [ ] Test every kanji and keyword (copy and paste from keywords.js)
 - [ ] Empty state
 - [ ] Error state
+- [ ] Google-style/Intellisense keyword autocomplete
 - [ ] Implement ?query= in URL
   - [ ] useEffect
 - [ ] Parse curly braces
@@ -33,6 +40,10 @@
   - Only display alternate keywords, don't use in keyworks to kanji search
 - [ ] Clipboard watcher
   - [ ] https://github.com/themoeway/yomitan/blob/55897b2b29e88ffd0c9140d03b9e74c4a94d98bd/ext/js/comm/clipboard-reader.js#L64
+- [ ] Grab keywords.js from github
 - [ ] Options?
   - [ ] Custom fonts?
   - [ ] Handle uploading stories
+- [ ] Helper extension?
+  - [ ] Automatically import stories
+  - [ ] Add/edit/get user/popular stories?
