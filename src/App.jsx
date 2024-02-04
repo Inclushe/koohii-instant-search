@@ -7,6 +7,7 @@ import {
 	mapKeywordsToKanji,
 	mapFrameNumbersToKanji,
 } from "./helpers/stories";
+import KK from "./helpers/keywords";
 
 function App() {
 	const [searchTerm, setSearchTerm] = React.useState("search 777 漢字");
@@ -53,7 +54,6 @@ function App() {
 	function processSearchTerms(output) {
 		const processedSearchTerms = [];
 		const results = output.results;
-		// console.log(results);
 		for (const result of results) {
 			if (result.type === "kanji") {
 				const currentStory = stories[result.value];
@@ -81,10 +81,7 @@ function App() {
 	React.useEffect(() => {
 		setStories(
 			parseStoriesCSV(
-				generateCSVFromKeywordsAndKanji(
-					window.KK.SEQ_KEYWORDS,
-					window.KK.SEQ_KANJIS,
-				),
+				generateCSVFromKeywordsAndKanji(KK.SEQ_KEYWORDS, KK.SEQ_KANJIS),
 			),
 		);
 		return () => {};
