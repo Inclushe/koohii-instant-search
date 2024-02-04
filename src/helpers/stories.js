@@ -1,5 +1,10 @@
 export function parseStoriesCSV(csv) {
 	let stories = csv;
+	// Remove first row
+	stories = stories.replace(
+		/^framenr,kanji,keyword,public,last_edited,story[\r\n|\r|\n]/,
+		"",
+	);
 	// Add space in front of all stories
 	stories = stories.replace(
 		/,(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},")/gm,
@@ -10,7 +15,7 @@ export function parseStoriesCSV(csv) {
 	// Break all lines
 	const lines = stories.split(/"[\r\n|\r|\n]/gm);
 	const entries = {};
-	for (let i = 1; i < lines.length; i++) {
+	for (let i = 0; i < lines.length; i++) {
 		const line = lines[i];
 		if (!line || line.trim().length === 0) {
 			continue;
@@ -21,6 +26,7 @@ export function parseStoriesCSV(csv) {
 		const quotesRegex = /^"(.*)"$/gm;
 		const quoteStoryRegex = /^" (.*)$/gm;
 		const quoteEscapeRegex = /\{quote\}/gm;
+		const blankEscapeRegex = /\{blank\}/gm;
 		const boldRegex = /#(.*?)#/gm;
 		const italicRegex = /\*(.*?)\*/gm;
 		const newLineRegex = /(\r\n|\r|\n)/gm;
@@ -30,6 +36,7 @@ export function parseStoriesCSV(csv) {
 			story = story.trim();
 			story = story.replace(quoteStoryRegex, "$1");
 			story = story.replace(quoteEscapeRegex, '"');
+			story = story.replace(blankEscapeRegex, "");
 			story = story.replace(boldRegex, "<b>$1</b>");
 			story = story.replace(keyword, `<b>${keyword}</b>`);
 			story = story.replace(italicRegex, "<i>$1</i>");
@@ -45,6 +52,16 @@ export function parseStoriesCSV(csv) {
 		];
 	}
 	return entries;
+}
+
+export function generateCSVFromKeywordsAndKanji(keywords, kanjis) {
+	let output = "framenr,kanji,keyword,public,last_edited,story\n";
+	for (let currentIndex = 0; currentIndex < kanjis.length; currentIndex++) {
+		output += `${currentIndex + 1},${kanjis[currentIndex]},"${
+			keywords[currentIndex]
+		}",0,0000-00-00 00:00:00,"{blank}"\n`;
+	}
+	return output;
 }
 
 export function mapKeywordsToKanji(stories) {

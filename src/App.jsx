@@ -1,8 +1,8 @@
 import React from "react";
-import myStoriesCSV from "./assets/my_stories.csv?raw";
 import StoryCard from "./components/StoryCard";
 import prepopulate from "./helpers/prepopulate";
 import {
+	generateCSVFromKeywordsAndKanji,
 	parseStoriesCSV,
 	mapKeywordsToKanji,
 	mapFrameNumbersToKanji,
@@ -21,19 +21,40 @@ function App() {
 				matches.push(keyword);
 			}
 		}
-		console.log(matches);
 		return matches;
 	}
 
 	function preprocessSearchTerm() {
 		const preprocessed = prepopulate(searchTerm, keywordsToKanji);
-		console.log(preprocessed);
 		return preprocessed;
+	}
+
+	function handleFileChange(event) {
+		const file = event.target.files[0];
+
+		const reader = new FileReader();
+		reader.onload = (event) => {
+			console.log(event.target.result);
+			// Save result to local storage
+			localStorage.setItem("userStoriesCSV", event.target.result);
+			const userStories = parseStoriesCSV(event.target.result);
+			const userKeywordsToKanji = mapKeywordsToKanji(userStories);
+			const userFrameNumbersToKanji = mapFrameNumbersToKanji(userStories);
+			setStories({ ...stories, ...userStories });
+			setKeywordsToKanji({ ...keywordsToKanji, ...userKeywordsToKanji });
+			setFrameNumbersToKanji({
+				...frameNumbersToKanji,
+				...userFrameNumbersToKanji,
+			});
+		};
+		reader.readAsText(file);
 	}
 
 	function processSearchTerms(output) {
 		const processedSearchTerms = [];
-		for (const result of output.results) {
+		const results = output.results;
+		// console.log(results);
+		for (const result of results) {
 			if (result.type === "kanji") {
 				const currentStory = stories[result.value];
 				if (currentStory) {
@@ -58,7 +79,14 @@ function App() {
 	}
 
 	React.useEffect(() => {
-		setStories(parseStoriesCSV(myStoriesCSV));
+		setStories(
+			parseStoriesCSV(
+				generateCSVFromKeywordsAndKanji(
+					window.KK.SEQ_KEYWORDS,
+					window.KK.SEQ_KANJIS,
+				),
+			),
+		);
 		return () => {};
 	}, []);
 
@@ -73,6 +101,7 @@ function App() {
 			<div className="w-full h-1 bg-orange-950" />
 			<div className="p-4 mx-auto max-w-2xl text-orange-950">
 				<h1 className="text-xl mb-4 font-bold">Koohii Instant Search</h1>
+				<input type="file" onChange={handleFileChange} />
 				<input
 					className="border border-orange-950 rounded mb-4 p-2 w-full"
 					type="text"

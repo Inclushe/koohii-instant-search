@@ -24,6 +24,7 @@
 - [ ] Empty state
 - [ ] Error state
 - [ ] Google-style/Intellisense keyword autocomplete
+  - [ ] Tab to complete
 - [ ] Implement ?query= in URL
   - [ ] useEffect
 - [ ] Parse curly braces

@@ -307,7 +307,7 @@ export default function prepopulate(searchTerms, keywordsToKanji) {
 
 		if (isOnIntermediateState) {
 			const slicedSearchValue = searchValue.slice(startPoint, curPoint);
-			const keywordMatches = getKeywordMatches(slicedSearchValue);
+			const keywordMatches = getKeywordMatches(slicedSearchValue.trim());
 			// console.log("isOnIntermediateState, matches:", keywordMatches.length);
 			if (keywordMatches.length === 0) {
 				// console.log("noResults");
