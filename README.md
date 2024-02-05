@@ -37,13 +37,15 @@
 - [ ] Initial state `design`
 - [ ] Empty state `design`
 - [ ] Error state `design`
-- [ ] Google-style/Intellisense keyword autocomplete
+- [ ] Dark mode `design`
+- [ ] Google-style/Intellisense keyword autocomplete `design/dev`
   - [ ] Tab to complete
-- [ ] Make stories upload drag and drop `design`
+- [ ] Make stories upload drag and drop `design/dev`
+- [ ] Add notice saying all data stays local `design`
 - [ ] Jisho and Koohii links `design`
 - [ ] Search and clear icons on search bar `design`
 - [ ] Hide title on search `design`
-- [ ] Grab alternate keywords
+- [ ] Grab alternate keywords `design/dev`
   - https://web.archive.org/web/20100511002740/http://www.tanos.co.uk/jlpt/jlpt1/kanji/
   - Only display alternate keywords, don't use in keyworks to kanji search
 - [ ] Clipboard watcher
