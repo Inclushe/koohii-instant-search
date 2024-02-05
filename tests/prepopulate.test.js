@@ -20,7 +20,8 @@ const frameNumbersToKanji = mapFrameNumbersToKanji(stories);
 // const val3 = prepopulate("666", keywordsToKanji);
 // const val4 = prepopulate("technique (old)", keywordsToKanji);
 // const val5 = prepopulate("technique 678", keywordsToKanji);
-const val5 = prepopulate("day ", keywordsToKanji);
+// const val5 = prepopulate("day ", keywordsToKanji);
+const val6 = prepopulate("of", keywordsToKanji);
 
 // test("prepopulate with no arguments", () => {
 // 	const val = prepopulate(null, keywordsToKanji);

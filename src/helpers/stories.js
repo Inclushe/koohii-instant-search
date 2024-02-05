@@ -27,6 +27,8 @@ export function parseStoriesCSV(csv) {
 		const quoteStoryRegex = /^" (.*)$/gm;
 		const quoteEscapeRegex = /\{quote\}/gm;
 		const blankEscapeRegex = /\{blank\}/gm;
+		const greaterThanRegex = />/gm;
+		const lessThanRegex = /</gm;
 		const boldRegex = /#(.*?)#/gm;
 		const italicRegex = /\*(.*?)\*/gm;
 		const newLineRegex = /(\r\n|\r|\n)/gm;
@@ -37,6 +39,8 @@ export function parseStoriesCSV(csv) {
 			story = story.replace(quoteStoryRegex, "$1");
 			story = story.replace(quoteEscapeRegex, '"');
 			story = story.replace(blankEscapeRegex, "");
+			story = story.replace(greaterThanRegex, "&gt;");
+			story = story.replace(lessThanRegex, "&lt;");
 			story = story.replace(boldRegex, "<b>$1</b>");
 			story = story.replace(keyword, `<b>${keyword}</b>`);
 			story = story.replace(italicRegex, "<i>$1</i>");

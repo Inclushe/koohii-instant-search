@@ -1,6 +1,6 @@
 function StoryCard({ frameNumber, kanjiCharacter, keyword, story }) {
 	return (
-		<div
+		<li
 			className="bg-white mb-4 rounded shadow-md px-6 py-4 flex gap-4 sm:gap-6 text-orange-950 group"
 			key={frameNumber}
 		>
@@ -16,10 +16,10 @@ function StoryCard({ frameNumber, kanjiCharacter, keyword, story }) {
 				<div className="text-4xl sm:text-6xl font-serif">{kanjiCharacter}</div>
 			</div>
 			<div className="flex-grow">
-				<div className="text-2xl font-serif mb-2">{keyword}</div>
+				<h2 className="text-2xl font-serif mb-2">{keyword}</h2>
 				<div dangerouslySetInnerHTML={{ __html: story }} />
 			</div>
-		</div>
+		</li>
 	);
 }
 

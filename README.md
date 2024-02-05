@@ -1,8 +1,7 @@
 # Koohii Search `but better`
 
-## Todo
+## Done
 
-- [ ] **Finish this week/end**
 - [x] Update favicon and title
 - [x] autofocus
 - [x] Keyword search
@@ -20,28 +19,35 @@
     - https://bun.sh/docs/cli/test
     - Run in watch mode
   - {subQuery: "hair on the head", type: "keyword"}
-- [ ] Test every kanji and keyword (copy and paste from keywords.js)
-- [ ] Empty state
-- [ ] Error state
+- [x] Test every kanji and keyword (copy and paste from keywords.js)
+- [x] Uploading stories
+  - Have empty state using keywords-rtk-1.20230411b.js
+  - Upload to local storage
+  - Stories may not have all keywords, so merge stories with keywords-rtk-1.20230411b.js
+- [x] Implement ?query= in URL
+  - [x] useEffect
+- [x] Parse curly braces
+  - [x] Example: 贄
+  - [x] Link to ?query=贄
+
+## Todo
+
+- [ ] **Finish this week/end**
+- [ ] Add search icon `design`
+- [ ] Initial state `design`
+- [ ] Empty state `design`
+- [ ] Error state `design`
 - [ ] Google-style/Intellisense keyword autocomplete
   - [ ] Tab to complete
-- [ ] Implement ?query= in URL
-  - [ ] useEffect
-- [ ] Parse curly braces
-  - [ ] Example: 贄
-  - [ ] Link to ?query=贄
-- [ ] Uploading stories
-  - [ ] Have empty state using keywords-rtk-1.20230411b.js
-  - [ ] Upload to local storage
-  - [ ] Stories may not have all keywords, so merge stories with keywords-rtk-1.20230411b.js
-- [ ] Jisho and Koohii links
-- [ ] Search and clear icons on search bar
+- [ ] Make stories upload drag and drop `design`
+- [ ] Jisho and Koohii links `design`
+- [ ] Search and clear icons on search bar `design`
+- [ ] Hide title on search `design`
 - [ ] Grab alternate keywords
   - https://web.archive.org/web/20100511002740/http://www.tanos.co.uk/jlpt/jlpt1/kanji/
   - Only display alternate keywords, don't use in keyworks to kanji search
 - [ ] Clipboard watcher
   - [ ] https://github.com/themoeway/yomitan/blob/55897b2b29e88ffd0c9140d03b9e74c4a94d98bd/ext/js/comm/clipboard-reader.js#L64
-- [ ] Grab keywords.js from github
 - [ ] Options?
   - [ ] Custom fonts?
   - [ ] Handle uploading stories
