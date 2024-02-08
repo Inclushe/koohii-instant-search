@@ -52,12 +52,13 @@ function App() {
 
 	function replaceCurlyBracesWithLinks(story) {
 		const curlyBraceRegex = /\{([\u4E00-\u9FFF])\}/gm;
-		let newStory = story;
+		const newStory = story;
 		newStory[5] = newStory[5].replace(curlyBraceRegex, (match) => {
 			const kanji = match.replace(/{|}/g, "");
-			return `<a class="text-blue-700 hover:underline" href="?query=${kanji}">${kanji}</a> (<span class="text-green-700">#${stories[
-				kanji
-			][0].trim()}</span>)`;
+			const frameNumber = stories[kanji]
+				? stories[kanji][0].trim()
+				: kanji.charCodeAt(0);
+			return `<a class="text-blue-700 hover:underline" href="?query=${kanji}">${kanji}</a> (<span class="text-green-700">#${frameNumber}</span>)`;
 		});
 		return newStory;
 	}

@@ -33,6 +33,7 @@
 ## Todo
 
 - [ ] **Finish this week/end**
+- [ ] Adjust algo to have `"` and `,` as terminators `dev`
 - [ ] Add search icon `design`
 - [ ] Initial state `design`
 - [ ] Empty state `design`
@@ -53,6 +54,6 @@
 - [ ] Options?
   - [ ] Custom fonts?
   - [ ] Handle uploading stories
-- [ ] Helper extension?
+- [-] Helper extension? `not doing`
   - [ ] Automatically import stories
   - [ ] Add/edit/get user/popular stories?
