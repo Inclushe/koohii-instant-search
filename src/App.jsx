@@ -26,7 +26,9 @@ function App() {
 	}
 
 	function preprocessSearchTerm() {
-		const preprocessed = prepopulate(searchTerm, keywordsToKanji);
+		const separatorRegex = /([.,\"'])/gm;
+		const searchTermSeparated = searchTerm.replace(separatorRegex, " $1 ");
+		const preprocessed = prepopulate(searchTermSeparated, keywordsToKanji);
 		return preprocessed;
 	}
 
@@ -87,6 +89,16 @@ function App() {
 				const currentStory = stories[frameNumbersToKanji[Number(result.value)]];
 				if (currentStory) {
 					processedSearchTerms.push(replaceCurlyBracesWithLinks(currentStory));
+				} else if (Number(result.value) > 0 && Number(result.value) <= 40879) {
+					// Show Unicode number for kanji instead
+					processedSearchTerms.push([
+						Number(result.value),
+						String.fromCharCode(Number(result.value)),
+						`Unicode #${Number(result.value)}`,
+						"0",
+						"0000-00-00 00:00:00",
+						"",
+					]);
 				}
 			}
 			if (result.type === "keyword") {
@@ -105,9 +117,9 @@ function App() {
 	}
 
 	function handleCardClick(event) {
+		if (!target.href) return;
 		event.preventDefault();
 		const target = event.target;
-		if (!target.href) return;
 		if (target.href.includes("?query=")) {
 			const query = decodeURIComponent(target.href.split("?query=")[1]);
 			setSearchTerm(query);
@@ -126,16 +138,24 @@ function App() {
 		// If there is a query param in the URL, set it as the search term
 		const url = new URL(window.location);
 		const query = url.searchParams.get("query");
-		if (query) {
-			setSearchTerm(decodeURIComponent(query));
+		try {
+			if (query) {
+				setSearchTerm(decodeURIComponent(query));
+			}
+		} catch (error) {
+			console.error(error);
 		}
 
 		// If history state changes, set search term to query param, set eventListener to variable
 		const handlePopState = (event) => {
 			const url = new URL(window.location);
 			const query = url.searchParams.get("query");
-			if (query) {
-				setSearchTerm(decodeURIComponent(query));
+			try {
+				if (query) {
+					setSearchTerm(decodeURIComponent(query));
+				}
+			} catch (error) {
+				console.error(error);
 			}
 		};
 		window.addEventListener("popstate", handlePopState);
@@ -180,7 +200,6 @@ function App() {
 			// remore query param from URL
 			const url = new URL(window.location);
 			url.searchParams.delete("query");
-			window.history.replaceState({}, "", url);
 		}
 		const url = new URL(window.location);
 		url.searchParams.set("query", encodeURIComponent(searchTerm));
@@ -189,48 +208,98 @@ function App() {
 
 	return (
 		<>
-			<div className="w-full h-1 bg-orange-950" />
-			<div className="p-4 mx-auto max-w-2xl text-orange-950">
-				<div className="flex justify-between mb-4 gap-1 flex-wrap">
-					<h1 className="text-xl font-bold">Koohii Instant Search</h1>
-					<label htmlFor="upload" className="flex flex-col gap-2">
-						<div>Upload your stories.</div>
+			<div className="p-4 mx-auto max-w-2xl text-orange-900">
+				<div className="relative mb-4">
+					<div className="drop-shadow-search-container">
 						<input
-							className="text-transparent max-w-[100px]"
-							type="file"
-							id="upload"
-							onChange={handleFileChange}
+							className="border-none pl-4 pr-12 py-3 w-full clip-bevel placeholder:text-orange-900/60"
+							type="text"
+							name="searchTerm"
+							value={searchTerm}
+							placeholder="Kanji, keyword or frame number"
+							autoFocus
+							onChange={(event) => {
+								setSearchTerm(event.target.value);
+							}}
 						/>
-					</label>
+					</div>
+					<img
+						className="absolute top-1/2 -translate-y-1/2 right-4"
+						src="/icon-search.svg"
+						height="24"
+						width="24"
+						alt=""
+					/>
 				</div>
-				<input
-					className="border border-orange-950 rounded mb-4 p-2 w-full"
-					type="text"
-					name="searchTerm"
-					value={searchTerm}
-					autoFocus
-					onChange={(event) => {
-						setSearchTerm(event.target.value);
-					}}
-				/>
-				<ul onClick={handleCardClick}>
-					{processSearchTerms(preprocessSearchTerm()).map((story, index) => {
-						if (story === undefined) return;
-						const frameNumber = story[0];
-						const kanjiCharacter = story[1];
-						const keyword = story[2];
-						const storyString = story[5];
-						return (
-							<StoryCard
-								key={`${frameNumber}-${index}`}
-								frameNumber={frameNumber}
-								kanjiCharacter={kanjiCharacter}
-								keyword={keyword}
-								story={storyString}
-							/>
-						);
-					})}
-				</ul>
+				{searchTerm.trim().length === 0 ? (
+					<>
+						<div className="flex flex-col justify-start items-start mt-8 mb-4 gap-4 flex-wrap">
+							<h1 className="sr-only">Koohii Instant Search</h1>
+							<img src="/logo.svg" width="389" height="289" alt="即答！" />
+							<p>
+								Search using kanji, keywords, frame numbers, or all of the
+								above.
+							</p>
+							<div className="drop-shadow-border-container w-full">
+								<div className="bg-[#FCD5A6] p-6 flex flex-col gap-4 clip-bevel">
+									<h2 className="text-xl font-bold">
+										Import your Koohii stories.
+									</h2>
+									<ol className="list-decimal pl-5">
+										<li>Log into your Koohii account.</li>
+										<li>
+											Under Study &gt; My Stories, click the green Export to CSV
+											button.
+										</li>
+										<li>
+											Choose <pre class="inline">my_stories.csv</pre> from the
+											file picker below.
+										</li>
+									</ol>
+									<p>
+										<img
+											className="inline-block align-top mr-2"
+											src="/icon-lock.svg"
+											height="24"
+											width="24"
+											alt=""
+										/>
+										Your stories are processed locally and never leave your
+										device.
+									</p>
+									<label htmlFor="upload" className="flex flex-col gap-2">
+										<div>Upload your stories.</div>
+										<input
+											className="text-transparent max-w-[100px]"
+											type="file"
+											id="upload"
+											onChange={handleFileChange}
+										/>
+									</label>
+								</div>
+							</div>
+						</div>
+					</>
+				) : (
+					<ul onClick={handleCardClick}>
+						{processSearchTerms(preprocessSearchTerm()).map((story, index) => {
+							if (story === undefined) return;
+							const frameNumber = story[0];
+							const kanjiCharacter = story[1];
+							const keyword = story[2];
+							const storyString = story[5];
+							return (
+								<StoryCard
+									key={`${frameNumber}-${index}`}
+									frameNumber={frameNumber}
+									kanjiCharacter={kanjiCharacter}
+									keyword={keyword}
+									story={storyString}
+								/>
+							);
+						})}
+					</ul>
+				)}
 			</div>
 		</>
 	);

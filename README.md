@@ -29,31 +29,43 @@
 - [x] Parse curly braces
   - [x] Example: 贄
   - [x] Link to ?query=贄
+- [x] Make keyword bold in story if not already `dev`
+  - Ex. 給
+- [x] Adjust algo to have `"` and `,` as terminators `dev`
+- [x] Allow unicode references in frame number search `dev`
+- [x] No nested bold tags `dev`
+  - Ex. 岸
+- [x] Fix gh issue
+- [x] Add search icon `design`
+- [x] Initial state `design`
+- [x] Hide title on search `design`
+- [x] Add notice saying all data stays local `design`
 
 ## Todo
 
-- [ ] **Finish this week/end**
-- [ ] Adjust algo to have `"` and `,` as terminators `dev`
-- [ ] Add search icon `design`
-- [ ] Initial state `design`
-- [ ] Empty state `design`
+
+- [-] Empty state `design`
 - [ ] Error state `design`
+  - [ ] Toast for failed imports: https://sonner.emilkowal.ski/
 - [ ] Dark mode `design`
 - [ ] Google-style/Intellisense keyword autocomplete `design/dev`
   - [ ] Tab to complete
 - [ ] Make stories upload drag and drop `design/dev`
-- [ ] Add notice saying all data stays local `design`
-- [ ] Jisho and Koohii links `design`
-- [ ] Search and clear icons on search bar `design`
-- [ ] Hide title on search `design`
-- [ ] Grab alternate keywords `design/dev`
-  - https://web.archive.org/web/20100511002740/http://www.tanos.co.uk/jlpt/jlpt1/kanji/
-  - Only display alternate keywords, don't use in keyworks to kanji search
-- [ ] Clipboard watcher
-  - [ ] https://github.com/themoeway/yomitan/blob/55897b2b29e88ffd0c9140d03b9e74c4a94d98bd/ext/js/comm/clipboard-reader.js#L64
+  - [ ] https://www.npmjs.com/package/react-dropzone
+- [-] Jisho and Koohii links `design`
+- [-] Search and clear icons on search bar `design`
+
+## Backburner
+
 - [ ] Options?
   - [ ] Custom fonts?
   - [ ] Handle uploading stories
-- [-] Helper extension? `not doing`
+- [ ] Grab alternate keywords `design/dev`
+  - https://web.archive.org/web/20100511002740/http://www.tanos.co.uk/jlpt/jlpt1/kanji/
+  - Only display alternate keywords, don't use in keyworks to kanji search
+- [ ] Helper extension?
   - [ ] Automatically import stories
   - [ ] Add/edit/get user/popular stories?
+- [ ] Clipboard watcher
+  - [ ] https://github.com/themoeway/yomitan/blob/55897b2b29e88ffd0c9140d03b9e74c4a94d98bd/ext/js/comm/clipboard-reader.js#L64
+  - [ ] Requires helper extension

@@ -32,6 +32,8 @@ export function parseStoriesCSV(csv) {
 		const boldRegex = /#(.*?)#/gm;
 		const italicRegex = /\*(.*?)\*/gm;
 		const newLineRegex = /(\r\n|\r|\n)/gm;
+		const doubleBoldStartRegex = /(<b><b>)/gm;
+		const doubleBoldEndRegex = /(<\/b><\/b>)/gm;
 		keyword = keyword.replace(quotesRegex, "$1");
 		let story = storyParts.join(",");
 		if (story) {
@@ -45,6 +47,8 @@ export function parseStoriesCSV(csv) {
 			story = story.replace(keyword, `<b>${keyword}</b>`);
 			story = story.replace(italicRegex, "<i>$1</i>");
 			story = story.replace(newLineRegex, "<br>");
+			story = story.replace(doubleBoldStartRegex, "<b>");
+			story = story.replace(doubleBoldEndRegex, "</b>");
 		}
 		entries[kanji] = [
 			framenr,
