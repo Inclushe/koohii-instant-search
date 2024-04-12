@@ -7,12 +7,7 @@ export default defineConfig({
 	plugins: [
 		VitePWA({
 			registerType: "autoUpdate",
-			includeAssets: [
-				"favicon.ico",
-				"icon-lock.svg",
-				"icon-search.svg",
-				"logo.svg",
-			],
+			includeAssets: ["favicon.ico"],
 			manifest: {
 				name: "Koohii Instant Search",
 				short_name: "Koohii Search",

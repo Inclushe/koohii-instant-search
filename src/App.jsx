@@ -9,6 +9,10 @@ import {
 	mapFrameNumbersToKanji,
 } from "./helpers/stories";
 import KK from "./helpers/keywords";
+import iconSearch from "./assets/icon-search.svg";
+import logo from "./assets/logo.svg";
+import iconLock from "./assets/icon-lock.svg";
+console.log(iconSearch);
 
 function App() {
 	const [searchTerm, setSearchTerm] = React.useState("");
@@ -227,7 +231,7 @@ function App() {
 					</Bevel>
 					<img
 						className="absolute top-1/2 -translate-y-1/2 right-4"
-						src="/icon-search.svg"
+						src={iconSearch}
 						height="24"
 						width="24"
 						alt=""
@@ -237,7 +241,7 @@ function App() {
 					<>
 						<div className="flex flex-col justify-start items-start mt-8 mb-4 gap-4 flex-wrap">
 							<h1 className="sr-only">Koohii Instant Search</h1>
-							<img src="/logo.svg" width="389" height="289" alt="即答！" />
+							<img src={logo} width="389" height="289" alt="即答！" />
 							<p>
 								Search using kanji, keywords, frame numbers, or all of the
 								above.
@@ -254,14 +258,14 @@ function App() {
 											button.
 										</li>
 										<li>
-											Choose <pre class="inline">my_stories.csv</pre> from the
-											file picker below.
+											Choose <pre className="inline">my_stories.csv</pre> from
+											the file picker below.
 										</li>
 									</ol>
 									<p>
 										<img
 											className="inline-block align-top mr-2"
-											src="/icon-lock.svg"
+											src={iconLock}
 											height="24"
 											width="24"
 											alt=""
