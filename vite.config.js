@@ -5,6 +5,7 @@ import { VitePWA } from "vite-plugin-pwa";
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [
+		react(),
 		VitePWA({
 			registerType: "autoUpdate",
 			includeAssets: ["favicon.ico"],
@@ -30,7 +31,12 @@ export default defineConfig({
 				globPatterns: ["**/*.{svg}"],
 			},
 		}),
-		react(),
 	],
-	assetsInclude: ["**/*.csv"],
+	// add this to cache all the imports
+	workbox: {
+		globPatterns: ["**/*"],
+	},
+	// add this to cache all the
+	// static assets in the public folder
+	includeAssets: ["**/*"],
 });
