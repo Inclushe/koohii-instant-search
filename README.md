@@ -43,10 +43,12 @@
 
 ## Todo
 
-
+- [ ] Meta tags
+- [ ] Add links to Import section
+- [ ] Fix bevel borders in Chrome/Safari
 - [-] Empty state `design`
 - [ ] Error state `design`
-  - [ ] Toast for failed imports: https://sonner.emilkowal.ski/
+  - [ ] Show error for failed imports
 - [ ] Dark mode `design`
 - [ ] Google-style/Intellisense keyword autocomplete `design/dev`
   - [ ] Tab to complete
@@ -54,6 +56,9 @@
   - [ ] https://www.npmjs.com/package/react-dropzone
 - [-] Jisho and Koohii links `design`
 - [-] Search and clear icons on search bar `design`
+- [ ] Host from koohii.inclushe.com
+- [ ] Improve copy
+- [ ] Readme
 
 ## Backburner
 

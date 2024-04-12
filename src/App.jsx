@@ -1,5 +1,6 @@
 import React from "react";
 import StoryCard from "./components/StoryCard";
+import Bevel from "./components/Bevel";
 import prepopulate from "./helpers/prepopulate";
 import {
 	generateCSVFromKeywordsAndKanji,
@@ -210,19 +211,20 @@ function App() {
 		<>
 			<div className="p-4 mx-auto max-w-2xl text-orange-900">
 				<div className="relative mb-4">
-					<div className="drop-shadow-search-container">
+					<Bevel className={"drop-shadow-search-container"}>
 						<input
-							className="border-none pl-4 pr-12 py-3 w-full clip-bevel placeholder:text-orange-900/60"
+							className="border-none outline-none pl-4 pr-12 py-3 w-full clip-bevel placeholder:text-orange-900/60"
 							type="text"
 							name="searchTerm"
 							value={searchTerm}
 							placeholder="Kanji, keyword or frame number"
+							autoComplete="off"
 							autoFocus
 							onChange={(event) => {
 								setSearchTerm(event.target.value);
 							}}
 						/>
-					</div>
+					</Bevel>
 					<img
 						className="absolute top-1/2 -translate-y-1/2 right-4"
 						src="/icon-search.svg"
@@ -240,8 +242,8 @@ function App() {
 								Search using kanji, keywords, frame numbers, or all of the
 								above.
 							</p>
-							<div className="drop-shadow-border-container w-full">
-								<div className="bg-[#FCD5A6] p-6 flex flex-col gap-4 clip-bevel">
+							<Bevel className={"before:bg-orange-200 w-full"}>
+								<div className="p-6 flex flex-col gap-4">
 									<h2 className="text-xl font-bold">
 										Import your Koohii stories.
 									</h2>
@@ -270,14 +272,14 @@ function App() {
 									<label htmlFor="upload" className="flex flex-col gap-2">
 										<div>Upload your stories.</div>
 										<input
-											className="text-transparent max-w-[100px]"
+											className="text-transparent"
 											type="file"
 											id="upload"
 											onChange={handleFileChange}
 										/>
 									</label>
 								</div>
-							</div>
+							</Bevel>
 						</div>
 					</>
 				) : (

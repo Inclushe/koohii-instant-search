@@ -5,7 +5,13 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ["Inter", "sans-serif"],
-				serif: ["Shippori Mincho", "serif"],
+				serif: [
+					"Hiragino Mincho Pro",
+					"ヒラギノ明朝 Pro W3",
+					"ＭＳ 明朝",
+					"ＭＳ Ｐ明朝",
+					"serif",
+				],
 			},
 			colors: {
 				orange: {
@@ -33,14 +39,6 @@ export default {
 					"0.5px -0.5px 0px #4D290F",
 				],
 				"search-container": [
-					"0.5px 0px 0px #4D290F",
-					"-0.5px 0px 0px #4D290F",
-					"0px 0.5px 0px #4D290F",
-					"0px -0.5px 0px #4D290F",
-					"0.5px 0.5px 0px #4D290F",
-					"-0.5px -0.5px 0px #4D290F",
-					"-0.5px 0.5px 0px #4D290F",
-					"0.5px -0.5px 0px #4D290F",
 					"0px 4px 0px #4D290F",
 					"0px 0px 250px rgba(168, 90, 26, 0.5)",
 				],

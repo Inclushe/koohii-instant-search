@@ -1,6 +1,8 @@
+import Bevel from "../Bevel/";
+
 function StoryCard({ frameNumber, kanjiCharacter, keyword, story }) {
 	return (
-		<li className="mb-4 drop-shadow-border-container group" key={frameNumber}>
+		<Bevel as="li" className={"mb-4 group"} key={frameNumber}>
 			<div className="px-6 py-4 flex gap-4 sm:gap-6 bg-white text-orange-900 clip-bevel">
 				<div className="flex flex-col justify-start items-stretch gap-0 py-1 text-center">
 					<a
@@ -20,7 +22,7 @@ function StoryCard({ frameNumber, kanjiCharacter, keyword, story }) {
 					<div dangerouslySetInnerHTML={{ __html: story }} />
 				</div>
 			</div>
-		</li>
+		</Bevel>
 	);
 }
 
