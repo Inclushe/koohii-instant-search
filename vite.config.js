@@ -26,6 +26,9 @@ export default defineConfig({
 					},
 				],
 			},
+			injectManifest: {
+				globPatterns: ["**/*.{svg}"],
+			},
 		}),
 		react(),
 	],
