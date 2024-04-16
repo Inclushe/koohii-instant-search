@@ -40,9 +40,6 @@
 - [x] Initial state `design`
 - [x] Hide title on search `design`
 - [x] Add notice saying all data stays local `design`
-
-## Todo
-
 - [x] Add slant
   - [ ] https://koohii-search.netlify.app/?query=%2520%25E9%2580%25B8%25E3%2582%258C%25E3%2582%258B
   - [ ] https://fonts.google.com/selection/embed
@@ -50,11 +47,15 @@
 - [x] Meta tags
 - [x] Fade in initial screen
   - [x] Prevent flash on results when refreshing
-- [ ] Add animation to exclamation mark
-- [ ] Add links to Import section
 - [x] Clear button on search bar
 - [x] Fix bevel borders in Chrome/Safari
 - [x] Empty state `design`
+- [x] Search and clear icons on search bar `design`
+
+## Todo
+
+- [ ] Add animation to exclamation mark
+- [ ] Add links to Import section
 - [ ] Error state `design`
   - [ ] Show error for failed imports
 - [ ] Dark mode `design`
@@ -62,8 +63,7 @@
   - [ ] Tab to complete
 - [ ] Make stories upload drag and drop `design/dev`
   - [ ] https://www.npmjs.com/package/react-dropzone
-- [-] Jisho and Koohii links `design`
-- [x] Search and clear icons on search bar `design`
+- [ ] Jisho and Koohii links `design`
 - [ ] Host from koohii.inclushe.com
 - [ ] Improve copy
   - [ ] Readme
