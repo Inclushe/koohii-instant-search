@@ -45,7 +45,7 @@ export function parseStoriesCSV(csv) {
 			story = story.replace(lessThanRegex, "&lt;");
 			story = story.replace(boldRegex, "<b>$1</b>");
 			story = story.replace(keyword, `<b>${keyword}</b>`);
-			story = story.replace(italicRegex, "<i>$1</i>");
+			story = story.replace(italicRegex, "<i class='italic-slant'>$1</i>");
 			story = story.replace(newLineRegex, "<br>");
 			story = story.replace(doubleBoldStartRegex, "<b>");
 			story = story.replace(doubleBoldEndRegex, "</b>");

@@ -43,10 +43,18 @@
 
 ## Todo
 
-- [ ] Meta tags
+- [x] Add slant
+  - [ ] https://koohii-search.netlify.app/?query=%2520%25E9%2580%25B8%25E3%2582%258C%25E3%2582%258B
+  - [ ] https://fonts.google.com/selection/embed
+  - [ ] https://github.com/tailwindlabs/tailwindcss/discussions/3225#discussioncomment-1204105
+- [x] Meta tags
+- [x] Fade in initial screen
+  - [x] Prevent flash on results when refreshing
+- [ ] Add animation to exclamation mark
 - [ ] Add links to Import section
-- [ ] Fix bevel borders in Chrome/Safari
-- [-] Empty state `design`
+- [x] Clear button on search bar
+- [x] Fix bevel borders in Chrome/Safari
+- [x] Empty state `design`
 - [ ] Error state `design`
   - [ ] Show error for failed imports
 - [ ] Dark mode `design`
@@ -55,10 +63,12 @@
 - [ ] Make stories upload drag and drop `design/dev`
   - [ ] https://www.npmjs.com/package/react-dropzone
 - [-] Jisho and Koohii links `design`
-- [-] Search and clear icons on search bar `design`
+- [x] Search and clear icons on search bar `design`
 - [ ] Host from koohii.inclushe.com
 - [ ] Improve copy
-- [ ] Readme
+  - [ ] Readme
+    - [ ] Emojis
+    - [ ] Like https://github.com/lrorpilla/jidoujisho
 
 ## Backburner
 

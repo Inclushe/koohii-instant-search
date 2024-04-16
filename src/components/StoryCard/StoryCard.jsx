@@ -13,13 +13,16 @@ function StoryCard({ frameNumber, kanjiCharacter, keyword, story }) {
 					>
 						{frameNumber}
 					</a>
-					<div className="text-4xl sm:text-6xl font-serif">
+					<div className="text-4xl md:text-6xl font-serif">
 						{kanjiCharacter}
 					</div>
 				</div>
 				<div className="flex-grow">
-					<h2 className="text-xl font-bold mb-1">{keyword}</h2>
-					<div dangerouslySetInnerHTML={{ __html: story }} />
+					<h2 className="text-base md:text-xl font-bold mb-1">{keyword}</h2>
+					<div
+						className="text-sm md:text-base"
+						dangerouslySetInnerHTML={{ __html: story }}
+					/>
 				</div>
 			</div>
 		</Bevel>

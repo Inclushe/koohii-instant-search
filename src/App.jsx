@@ -10,6 +10,7 @@ import {
 } from "./helpers/stories";
 import KK from "./helpers/keywords";
 import iconSearch from "./assets/icon-search.svg";
+import iconX from "./assets/icon-x.svg";
 import logo from "./assets/logo.svg";
 import iconLock from "./assets/icon-lock.svg";
 console.log(iconSearch);
@@ -117,6 +118,11 @@ function App() {
 					processedSearchTerms.push(replaceCurlyBracesWithLinks(currentStory));
 				}
 			}
+		}
+		if (processedSearchTerms.length === 0) {
+			processedSearchTerms.push({
+				message: "No results found.",
+			});
 		}
 		return processedSearchTerms;
 	}
@@ -229,17 +235,27 @@ function App() {
 							}}
 						/>
 					</Bevel>
-					<img
-						className="absolute top-1/2 -translate-y-1/2 right-4"
-						src={iconSearch}
-						height="24"
-						width="24"
-						alt=""
-					/>
+					{searchTerm.trim().length === 0 ? (
+						<img
+							className="absolute top-1/2 -translate-y-1/2 right-3.5"
+							src={iconSearch}
+							height="24"
+							width="24"
+							alt=""
+						/>
+					) : (
+						<button
+							type="button"
+							className="absolute top-1/2 -translate-y-1/2 right-3.5 p-2 translate-x-2"
+							onClick={() => setSearchTerm("")}
+						>
+							<img className="" src={iconX} height="24" width="24" alt="" />
+						</button>
+					)}
 				</div>
 				{searchTerm.trim().length === 0 ? (
 					<>
-						<div className="flex flex-col justify-start items-start mt-8 mb-4 gap-4 flex-wrap">
+						<div className="flex flex-col justify-start items-start mt-8 mb-4 gap-4 flex-wrap transition-[opacity,transform] animate-fade-in">
 							<h1 className="sr-only">Koohii Instant Search</h1>
 							<img src={logo} width="389" height="289" alt="即答！" />
 							<p>
@@ -290,6 +306,9 @@ function App() {
 					<ul onClick={handleCardClick}>
 						{processSearchTerms(preprocessSearchTerm()).map((story, index) => {
 							if (story === undefined) return;
+							if (story.message) {
+								return <li key={index}>{story.message}</li>;
+							}
 							const frameNumber = story[0];
 							const kanjiCharacter = story[1];
 							const keyword = story[2];
