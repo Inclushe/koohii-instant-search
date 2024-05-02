@@ -13,7 +13,6 @@ import iconSearch from "./assets/icon-search.svg";
 import iconX from "./assets/icon-x.svg";
 import logo from "./assets/logo.svg";
 import iconLock from "./assets/icon-lock.svg";
-console.log(iconSearch);
 
 function App() {
 	const [searchTerm, setSearchTerm] = React.useState("");

@@ -63,7 +63,7 @@
   - [ ] Tab to complete
 - [ ] Make stories upload drag and drop `design/dev`
   - [ ] https://www.npmjs.com/package/react-dropzone
-- [ ] Jisho and Koohii links `design`
+- [x] Jisho and Koohii links `design`
 - [ ] Host from koohii.inclushe.com
 - [ ] Improve copy
   - [ ] Readme
