@@ -51,21 +51,16 @@
 - [x] Fix bevel borders in Chrome/Safari
 - [x] Empty state `design`
 - [x] Search and clear icons on search bar `design`
+- [x] Jisho and Koohii links `design`
+- [x] Add animation to exclamation mark
+- [x] Add links to Import section
+- [x] Make stories upload drag and drop `design/dev`
 
 ## Todo
 
-- [x] Add animation to exclamation mark
-- [ ] Add links to Import section
-- [ ] Error state `design`
-  - [ ] Show error for failed imports
-- [ ] Dark mode `design`
-- [ ] Google-style/Intellisense keyword autocomplete `design/dev`
-  - [ ] Tab to complete
-- [ ] Make stories upload drag and drop `design/dev`
-  - [ ] https://www.npmjs.com/package/react-dropzone
-- [x] Jisho and Koohii links `design`
 - [ ] Host from koohii.inclushe.com
 - [ ] Improve copy
+  - [ ] Copy under logo
   - [ ] Readme
     - [ ] Emojis
     - [ ] Like https://github.com/lrorpilla/jidoujisho
@@ -84,3 +79,8 @@
 - [ ] Clipboard watcher
   - [ ] https://github.com/themoeway/yomitan/blob/55897b2b29e88ffd0c9140d03b9e74c4a94d98bd/ext/js/comm/clipboard-reader.js#L64
   - [ ] Requires helper extension
+- [ ] Google-style/Intellisense keyword autocomplete `design/dev`
+  - [ ] Tab to complete
+- [ ] Dark mode `design`
+- [ ] Error state `design`
+  - [ ] Show error for failed imports

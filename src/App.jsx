@@ -1,4 +1,5 @@
 import React from "react";
+import { useDropzone } from "react-dropzone";
 import StoryCard from "./components/StoryCard";
 import Bevel from "./components/Bevel";
 import prepopulate from "./helpers/prepopulate";
@@ -18,7 +19,37 @@ function App() {
 	const [stories, setStories] = React.useState({});
 	const [keywordsToKanji, setKeywordsToKanji] = React.useState({});
 	const [frameNumbersToKanji, setFrameNumbersToKanji] = React.useState({});
-	const renderCount = React.useRef(0);
+	const [showUploadBoxAnyway, setShowUploadBoxAnyway] = React.useState(false);
+	const [userHasUploadedStories, setUserHasUploadedStories] =
+		React.useState(false);
+	const onDrop = (acceptedFiles) => {
+		const file = acceptedFiles[0];
+
+		const reader = new FileReader();
+		reader.onload = (event) => {
+			// Save result to local storage
+			localStorage.setItem("userStoriesCSV", event.target.result);
+			const userStories = parseStoriesCSV(event.target.result);
+			const userKeywordsToKanji = mapKeywordsToKanji(userStories);
+			const userFrameNumbersToKanji = mapFrameNumbersToKanji(userStories);
+			setStories({ ...stories, ...userStories });
+			setKeywordsToKanji({ ...keywordsToKanji, ...userKeywordsToKanji });
+			setFrameNumbersToKanji({
+				...frameNumbersToKanji,
+				...userFrameNumbersToKanji,
+			});
+			setUserHasUploadedStories(true);
+			setShowUploadBoxAnyway(false);
+		};
+		reader.readAsText(file);
+	};
+	const { getRootProps, getInputProps } = useDropzone({
+		onDrop,
+		multiple: false,
+		accept: {
+			"text/csv": [],
+		},
+	});
 	const homepageRendered = React.useRef(false);
 
 	function getKeywordMatches(term) {
@@ -36,26 +67,6 @@ function App() {
 		const searchTermSeparated = searchTerm.replace(separatorRegex, " $1 ");
 		const preprocessed = prepopulate(searchTermSeparated, keywordsToKanji);
 		return preprocessed;
-	}
-
-	function handleFileChange(event) {
-		const file = event.target.files[0];
-
-		const reader = new FileReader();
-		reader.onload = (event) => {
-			// Save result to local storage
-			localStorage.setItem("userStoriesCSV", event.target.result);
-			const userStories = parseStoriesCSV(event.target.result);
-			const userKeywordsToKanji = mapKeywordsToKanji(userStories);
-			const userFrameNumbersToKanji = mapFrameNumbersToKanji(userStories);
-			setStories({ ...stories, ...userStories });
-			setKeywordsToKanji({ ...keywordsToKanji, ...userKeywordsToKanji });
-			setFrameNumbersToKanji({
-				...frameNumbersToKanji,
-				...userFrameNumbersToKanji,
-			});
-		};
-		reader.readAsText(file);
 	}
 
 	function replaceCurlyBracesWithLinks(story) {
@@ -192,6 +203,7 @@ function App() {
 					...currentFrameNumbersToKanji,
 					...userFrameNumbersToKanji,
 				};
+				setUserHasUploadedStories(true);
 			} catch (error) {
 				console.error(error);
 			}
@@ -255,8 +267,12 @@ function App() {
 				</div>
 				{searchTerm.trim().length === 0 ? (
 					<HomePage
-						handleFileChange={handleFileChange}
 						homepageRendered={homepageRendered}
+						getRootProps={getRootProps}
+						getInputProps={getInputProps}
+						userHasUploadedStories={userHasUploadedStories}
+						showUploadBoxAnyway={showUploadBoxAnyway}
+						setShowUploadBoxAnyway={setShowUploadBoxAnyway}
 					/>
 				) : (
 					<ul onClick={handleCardClick}>
