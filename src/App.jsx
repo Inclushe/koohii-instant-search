@@ -11,14 +11,15 @@ import {
 import KK from "./helpers/keywords";
 import iconSearch from "./assets/icon-search.svg";
 import iconX from "./assets/icon-x.svg";
-import logo from "./assets/logo.svg";
-import iconLock from "./assets/icon-lock.svg";
+import HomePage from "./components/HomePage";
 
 function App() {
 	const [searchTerm, setSearchTerm] = React.useState("");
 	const [stories, setStories] = React.useState({});
 	const [keywordsToKanji, setKeywordsToKanji] = React.useState({});
 	const [frameNumbersToKanji, setFrameNumbersToKanji] = React.useState({});
+	const renderCount = React.useRef(0);
+	const homepageRendered = React.useRef(false);
 
 	function getKeywordMatches(term) {
 		const matches = [];
@@ -253,54 +254,10 @@ function App() {
 					)}
 				</div>
 				{searchTerm.trim().length === 0 ? (
-					<>
-						<div className="flex flex-col justify-start items-start mt-8 mb-4 gap-4 flex-wrap transition-[opacity,transform] animate-fade-in">
-							<h1 className="sr-only">Koohii Instant Search</h1>
-							<img src={logo} width="389" height="289" alt="即答！" />
-							<p>
-								Search using kanji, keywords, frame numbers, or all of the
-								above.
-							</p>
-							<Bevel className={"before:bg-orange-200 w-full"}>
-								<div className="p-6 flex flex-col gap-4">
-									<h2 className="text-xl font-bold">
-										Import your Koohii stories.
-									</h2>
-									<ol className="list-decimal pl-5">
-										<li>Log into your Koohii account.</li>
-										<li>
-											Under Study &gt; My Stories, click the green Export to CSV
-											button.
-										</li>
-										<li>
-											Choose <pre className="inline">my_stories.csv</pre> from
-											the file picker below.
-										</li>
-									</ol>
-									<p>
-										<img
-											className="inline-block align-top mr-2"
-											src={iconLock}
-											height="24"
-											width="24"
-											alt=""
-										/>
-										Your stories are processed locally and never leave your
-										device.
-									</p>
-									<label htmlFor="upload" className="flex flex-col gap-2">
-										<div>Upload your stories.</div>
-										<input
-											className="text-transparent"
-											type="file"
-											id="upload"
-											onChange={handleFileChange}
-										/>
-									</label>
-								</div>
-							</Bevel>
-						</div>
-					</>
+					<HomePage
+						handleFileChange={handleFileChange}
+						homepageRendered={homepageRendered}
+					/>
 				) : (
 					<ul onClick={handleCardClick}>
 						{processSearchTerms(preprocessSearchTerm()).map((story, index) => {

@@ -49,9 +49,15 @@ export default {
 					"50%": { opacity: 0, transform: "translateY(8px)" },
 					"100%": { opacity: 1, transform: "translateY(0)" },
 				},
+				stretch: {
+					"0%": { transform: "scaleX(1)" },
+					"50%": { transform: "scaleX(5)" },
+					"100%": { transform: "scaleX(1)" },
+				},
 			},
 			animation: {
 				"fade-in": "fade-in 200ms ease-in-out forwards",
+				stretch: "stretch 500ms 300ms ease-in-out forwards",
 			},
 		},
 	},

@@ -54,7 +54,7 @@
 
 ## Todo
 
-- [ ] Add animation to exclamation mark
+- [x] Add animation to exclamation mark
 - [ ] Add links to Import section
 - [ ] Error state `design`
   - [ ] Show error for failed imports
