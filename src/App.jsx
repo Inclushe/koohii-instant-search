@@ -48,6 +48,7 @@ function App() {
 		multiple: false,
 		accept: {
 			"text/csv": [],
+			"text/plain": [],
 		},
 	});
 	const homepageRendered = React.useRef(false);
