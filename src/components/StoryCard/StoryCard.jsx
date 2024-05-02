@@ -7,7 +7,7 @@ function StoryCard({ frameNumber, kanjiCharacter, keyword, story }) {
 	return (
 		<Bevel as="li" className={"mb-4 group"} key={frameNumber}>
 			<div className="px-6 py-4 flex gap-4 sm:gap-6 bg-white text-orange-900 clip-bevel">
-				<div className="flex flex-col justify-start items-stretch gap-1 py-[3px] md:py-[5px] text-center">
+				<div className="flex flex-col justify-start items-stretch gap-1 py-[1px] md:py-[5px] text-center">
 					<p className="text-orange-900/60 text-sm z-10">{frameNumber}</p>
 					<div className="text-4xl md:text-6xl font-serif">
 						{kanjiCharacter}
