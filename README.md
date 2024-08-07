@@ -58,7 +58,7 @@
 
 ## Todo
 
-- [ ] Host from koohii.inclushe.com
+- [x] Host from koohii.inclushe.com
 - [ ] Improve copy
   - [ ] Copy under logo
   - [ ] Readme
